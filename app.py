@@ -15,7 +15,9 @@ transactions = [
 # Read operation: List all transactions
 @app.route("/")
 def get_transactions():
-    return render_template("transactions.html", transactions=transactions)
+    # Calculate the total balance
+    total_balance = sum(transaction['amount'] for transaction in transactions)
+    return render_template("transactions.html", transactions=transactions, total_balance=total_balance)
 
 # Create operation: Display add transaction form
 # Route to handle the creation of a new transaction
